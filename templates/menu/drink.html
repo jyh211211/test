@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+
+{%block con%}
+    <div class="text-center">
+        <h1>Drink line-up</h1>
+        {% if user.is_superuser %}
+        <a href="{%url 'menu:create' %}"><button class="btn btn-success text-end">메뉴생성</button></a>
+        {% endif %}
+    {{request.path}}
+    </div>
+    
+
+            <div class="row">
+                {% for i in menuset %}
+                    <div class="col-sm-3 mt-3">
+                        <div class="card" style="width: 18rem;">
+                            <img src="{{i.getpic}}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{i.name}}</h5>
+                                <p class="card-text">{{i.con|truncatewords:3}}</p>
+                                <a href="{%url 'menu:detail' i.name %}" class="btn btn-primary">상세보기</a>
+                            </div>
+                        </div>
+                    </div>        
+                {%endfor%}
+            </div>
+    </form>
+{%endblock%}

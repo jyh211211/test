@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>PA★STAR 파스탈</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-xl" style="print-color-adjust: white; background-color:rgb(88, 36, 7);">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{%url 'acc:index' %}">
+                    <img src="/media/파스탈_로고.png" alt="" width="80" height="56" class="d-inline-block align-text-top">
+                </a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{%url 'acc:index' %}">홈</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">건의 게시판</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{%url 'menu:pasta' %}">Pasta</a></li>
+                                <li><a class="dropdown-item" href="{%url 'menu:risotto' %}">Risotto</a></li>
+                                <li><a class="dropdown-item" href="{% url 'menu:dish' %}">Dish</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{%url 'menu:drink' %}">Non-Alcohol</a></li>
+                                <li><a class="dropdown-item" href="{%url 'menu:drink' %}">Alcohol</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">매장위치</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">북마크</a>
+                        </li>
+                    </ul>
+                </div>
+                {% if user.is_authenticated %}
+                    <img src="{{request.user.getpic}}" alt="" width="80" height="56" class="d-inline-block align-text-top">
+                    <strong>{{request.user}}님🥰 환영합니다</strong>
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">로그아웃</button>
+
+                {% else %}
+                    <a href="{%url 'acc:login' %}" class="text-end"><button type="button" class="btn btn-dark">로그인</button></a>
+
+                {% endif %}
+            </div>
+        </nav>
+
+        <div class="container mt-5">
+            {%block con%}
+            {%endblock%}
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">로그아웃</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    로그아웃 하시겠습니까?  
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    <a href="{% url 'acc:logout' %}" class="text-end"><button type="button" class="btn btn-danger">로그아웃</button></a>
+                    </div>
+                </div>
+                </div>
+            </div>
+    </body>
+</html>

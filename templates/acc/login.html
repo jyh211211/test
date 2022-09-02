@@ -1,0 +1,20 @@
+{%extends 'base.html'%}
+
+{%block con%}
+
+<form method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 text-center">
+            <input type="text" name="uname" placeholder="ID 입력"><br>
+            <input type="password" name="upass" placeholder="PW 입력"><br>
+            <button class="btn btn-dark">로그인</button>
+
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</form>
+    <a href="{%url 'acc:signup' %}"><button class="btn btn-success">회원가입</button></a>
+
+{%endblock%}

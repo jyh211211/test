@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{%block con%}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-6 mt-5">
+            ID :<input type="text" name="uname"><br><br>
+            PW :<input type="password" name="upass"><br><br>
+            E-Mail :<input type="text" name="umail"><br><br>
+            <input type="file" name="upic"><br><br>
+            <button class="btn btn-primary">회원가입</button>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</form>
+{%endblock%}

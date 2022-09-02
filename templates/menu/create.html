@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+
+{%block con%}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-8">
+            메뉴 이름:<input type="text" name="mname"><br><br>
+            메뉴 가격:<input type="text" name="mpri"><br><br>
+            메뉴 사진:<input type="file" name="mpic"><br><br>
+            메뉴 설명:<textarea name="mcon" cols="50" rows="4"></textarea><br><br>
+            메뉴 종류:<ul>
+            {% for i in list %}
+                <li><input type="radio" name="mtype" value="{{i}}">{{i}}</li><br>
+            {% endfor %}
+            </ul>
+            <button class="btn btn-warning">등록</button>
+        </div>
+    </div>
+</form>
+{%endblock%}

@@ -1,0 +1,41 @@
+{%extends 'base.html'%}
+
+{%block con%}
+    <div class="row">
+        <div class="text-center">
+            <img src="/media/menu/메뉴모듬.png" id="all" class="w-50 p-3">
+        </div>
+    </div>
+
+    <style>
+        #all{
+            animation: fadein 2s;
+        -moz-animation: fadein 2s;
+        /* Firefox */
+        -webkit-animation: fadein 2s;
+        /* Safari and Chrome */
+        -o-animation: fadein 2s;
+        /* Opera */
+        }
+        @keyframes fadein {
+        from {
+            opacity: 0;
+        }
+ 
+        to {
+            opacity: 1;
+        }
+        }
+
+        @-webkit-keyframes fadein {
+        /* Safari and Chrome */
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+        }
+    </style>
+{%endblock%}
